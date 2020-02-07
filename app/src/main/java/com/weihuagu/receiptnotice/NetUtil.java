@@ -8,7 +8,9 @@ import java.io.StringWriter;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -18,6 +20,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Call;
 import okhttp3.ConnectionSpec;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -110,7 +113,7 @@ public class NetUtil {
     private OkHttpClient getHttpsClientWithTrustAllCertificates() {
         OkHttpClient.Builder okhttpClient = new OkHttpClient().newBuilder();
         //信任所有服务器地址
-        okhttpClient. connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
+        okhttpClient.connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
                 .readTimeout(20, TimeUnit.SECONDS);//设置读取超时时间
         okhttpClient.hostnameVerifier(new HostnameVerifier() {
             @Override
@@ -151,4 +154,7 @@ public class NetUtil {
 
         return okhttpClient.build();
     }
+
+
+
 }

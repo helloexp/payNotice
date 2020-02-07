@@ -1,8 +1,7 @@
 package com.weihuagu.receiptnotice;
 import android.app.Notification;
 import android.os.Bundle;
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
@@ -10,6 +9,8 @@ import static org.mockito.Mockito.*;
 import org.mockito.ArgumentMatchers;
 import java.util.Map;
 import java.util.HashMap;
+
+import androidx.test.runner.AndroidJUnit4;
 
 @RunWith(AndroidJUnit4.class)
 public class TestCashbarNotificationHandle{

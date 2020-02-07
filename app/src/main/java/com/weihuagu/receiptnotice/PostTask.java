@@ -16,7 +16,7 @@ public class PostTask extends AsyncTask<Map<String, String>, Void, String[]> {
         public String TAG="NLService";
         public String randomtasknum;
         public Map<String ,String> recordpostmap;
-        private NetUtil netutil=new NetUtil();
+        private NetUtil netutil=new NetUtil();   //网络请求工具
         public void setRandomTaskNum(String num){
                 this.randomtasknum=num;
         }
@@ -38,6 +38,9 @@ public class PostTask extends AsyncTask<Map<String, String>, Void, String[]> {
         {
                 this.asyncResponse = asyncResponse;
         }
+
+
+
 
         @Override
         protected String[] doInBackground(Map<String,String> ... key) {
@@ -64,7 +67,10 @@ public class PostTask extends AsyncTask<Map<String, String>, Void, String[]> {
                                 resultstr[1]="true";
                                 resultstr[2]=returnstr;
                                 return resultstr;
-                        }catch(IOException e){}
+                        }catch(IOException e){
+
+
+                        }
                 }
                 if("https".equals(protocol)){
                         try{

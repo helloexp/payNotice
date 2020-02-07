@@ -30,7 +30,7 @@ public class MipushNotificationHandle extends NotificationHandle{
                                 postmap.put("type","alipay-transfer");
                                 postmap.put("time",notitime);
                                 postmap.put("title","转账");
-                                postmap.put("money","-0.00");
+                                postmap.put("money",extractMoney(content));
                                 postmap.put("content",content);
                                 postmap.put("transferor",whoTransferred(content));
 
@@ -41,6 +41,9 @@ public class MipushNotificationHandle extends NotificationHandle{
                 if(title.contains("动账通知")){
                         if(content.contains("入账")&&content.contains("尾号为")){
                                 Map<String,String> postmap=new HashMap<String,String>();
+
+
+
                                 postmap.put("type","unionpay");
                                 postmap.put("time",notitime);
                                 postmap.put("title","云闪付扫码收款");

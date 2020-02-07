@@ -3,8 +3,10 @@ package com.weihuagu.receiptnotice;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.service.notification.StatusBarNotification;
 import android.view.MenuItem;
 import android.view.Menu;
 import android.content.SharedPreferences;
@@ -30,6 +32,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.github.pedrovgs.lynx.LynxConfig;
 import com.github.pedrovgs.lynx.LynxActivity;
 
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
@@ -40,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AutoCompleteTextView posturl;
     private SharedPreferences sp;
     public PreferenceUtil preference ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         posturl = (AutoCompleteTextView) findViewById(R.id.posturl);
         if (getPostUrl() != null)
             posturl.setHint(getPostUrl());
+
+
+
+
+
+
+
+
+
+        setPostUrl();
 
 
     }
@@ -112,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnsetposturl:
                 posturl.setHint(null);
                 setPostUrl();
+
+
                 break;
             case R.id.floatingshowlog:
                 showLog();

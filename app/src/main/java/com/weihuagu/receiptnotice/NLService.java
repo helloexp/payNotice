@@ -22,6 +22,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 来通知监听类
+ */
 public class NLService extends NotificationListenerService implements AsyncResponse, IDoPost, ActionStatusBarNotification {
         private String TAG="NLService";
         private String posturl=null;
@@ -40,6 +43,7 @@ public class NLService extends NotificationListenerService implements AsyncRespo
         public void onNotificationPosted(StatusBarNotification sbn) {
                 //        super.onNotificationPosted(sbn);
                 //这里只是获取了包名和通知提示信息，其他数据可根据需求取，注意空指针就行
+                Log.e("xxxxx","111111");
 
                 if(getPostUrl()==null)
                         return;
@@ -143,7 +147,7 @@ public class NLService extends NotificationListenerService implements AsyncRespo
                 }
 
                 PreferenceUtil preference=new PreferenceUtil(getBaseContext());
-		PostMapFilter mapfilter=new PostMapFilter(preference,params,this.posturl);
+		        PostMapFilter mapfilter=new PostMapFilter(preference,params,this.posturl);
                 Map<String, String> recordmap=mapfilter.getLogMap();
                 Map<String, String> postmap=mapfilter.getPostMap();
 
