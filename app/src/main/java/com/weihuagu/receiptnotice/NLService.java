@@ -20,6 +20,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -43,7 +44,7 @@ public class NLService extends NotificationListenerService implements AsyncRespo
         public void onNotificationPosted(StatusBarNotification sbn) {
                 //        super.onNotificationPosted(sbn);
                 //这里只是获取了包名和通知提示信息，其他数据可根据需求取，注意空指针就行
-                Log.e("xxxxx","111111");
+              Toast.makeText(getBaseContext(),"收到通知",Toast.LENGTH_LONG).show();
 
                 if(getPostUrl()==null)
                         return;
@@ -162,10 +163,15 @@ public class NLService extends NotificationListenerService implements AsyncRespo
                 String tasknum=RandomUtil.getRandomTaskNum();
                 mtask.setRandomTaskNum(tasknum);
                 mtask.setOnAsyncResponse(this);
+
+
+
+
+
                 if(recordmap!=null)
-                        LogUtil.postRecordLog(tasknum,recordmap.toString());
+                        LogUtil.postRecordLog(tasknum,map2Json(recordmap));
                 else
-                        LogUtil.postRecordLog(tasknum,postmap.toString());
+                        LogUtil.postRecordLog(tasknum,map2Json(postmap));
 
                 mtask.execute(postmap);
 
@@ -202,5 +208,28 @@ public class NLService extends NotificationListenerService implements AsyncRespo
         private void subMessage() {
 
 
+        }
+
+
+
+
+
+
+
+
+
+
+
+        public String map2Json(Map<String,String> map){
+                String mapjson="";
+                Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+                while (entries.hasNext()) {
+                        Map.Entry<String, String> entry = entries.next();
+                        mapjson=mapjson+'"'+entry.getKey()+'"' + ":"+'"'+entry.getValue()+'"'+",";
+                }
+                int strlength=(int)mapjson.length();
+                mapjson=mapjson.substring(0,(strlength-1));
+                mapjson="{"+mapjson+"}";
+                return mapjson;
         }
 }

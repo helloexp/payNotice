@@ -36,6 +36,12 @@ public class NetUtil {
 
     String httppost(String url, String json) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
+
+
+
+
+
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时时间
                 .readTimeout(20, TimeUnit.SECONDS)//设置读取超时时间

@@ -32,6 +32,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.github.pedrovgs.lynx.LynxConfig;
 import com.github.pedrovgs.lynx.LynxActivity;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -72,17 +74,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             posturl.setHint(getPostUrl());
 
 
-
-
-
-
-
-
-
         setPostUrl();
 
 
     }
+
+
+
+
+
+
+
+
+    public String map2Json(Map<String,String> map){
+        String mapjson="";
+        Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<String, String> entry = entries.next();
+            mapjson=mapjson+'"'+entry.getKey()+'"' + ":"+'"'+entry.getValue()+'"'+",";
+        }
+        int strlength=(int)mapjson.length();
+        mapjson=mapjson.substring(0,(strlength-1));
+        mapjson="{"+mapjson+"}";
+        return mapjson;
+    }
+
+
+
+
 
     private void setListerner() {
 
