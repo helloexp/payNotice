@@ -20,7 +20,6 @@ public class PostTask extends AsyncTask<Map<String, String>, Void, String[]> {
         public void setRandomTaskNum(String num){
                 this.randomtasknum=num;
         }
-        OkHttpClient client = new OkHttpClient();
         //fuck 竟然不导包找不到个好的map转json的
         public String map2Json(Map<String,String> map){
                 String mapjson="";

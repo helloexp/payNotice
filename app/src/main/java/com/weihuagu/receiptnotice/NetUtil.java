@@ -31,9 +31,7 @@ import okhttp3.TlsVersion;
 
 public class NetUtil {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    OkHttpClient client = new OkHttpClient();
     PreferenceUtil preferceutil = new PreferenceUtil(MainApplication.getAppContext());
-
     String httppost(String url, String json) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
 

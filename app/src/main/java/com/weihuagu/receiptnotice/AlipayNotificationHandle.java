@@ -41,7 +41,7 @@ public class AlipayNotificationHandle extends NotificationHandle{
                                 postmap.put("type","alipay-transfer");
                                 postmap.put("time",notitime);
                                 postmap.put("title","转账");
-                                postmap.put("money","-0.00");
+                                postmap.put("money",extractMoney(content));
                                 postmap.put("content",content);
                                 postmap.put("transferor",whoTransferred(content));
 
